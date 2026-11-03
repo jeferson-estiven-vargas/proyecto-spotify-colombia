@@ -1,0 +1,5 @@
+venv/
+.ipynb_checkpoints/
+__pycache__/
+# Dataset de Kaggle: es pesado, se documenta cómo descargarlo
+data/raw/universal_top_spotify_songs.csv
