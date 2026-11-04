@@ -42,17 +42,17 @@ El archivo de Kaggle no se sube a GitHub por su tamaño (está en `.gitignore`).
 
 ```
 proyecto-spotify-colombia/
-├── README.md                     # Este archivo
-├── .gitignore                    # Archivos que no se suben (entorno y CSV pesado)
-├── requirements.txt              # Dependencias con versiones exactas
+├── README.md                     
+├── .gitignore                    
+├── requirements.txt              
 ├── data/
-│   └── raw/                      # Datos originales, sin modificar
+│   └── raw/                      
 │       └── regional-co-weekly-2024-01-11.csv
 ├── notebooks/
-│   └── diagnostico_calidad.ipynb # Carga, inspección y diagnóstico
+│   └── diagnostico_calidad.ipynb 
 └── reports/
-    ├── informe_diagnostico.md    # Informe técnico
-    └── tabla_hallazgos.csv       # Tabla de hallazgos generada por el notebook
+    ├── informe_diagnostico.md    
+    └── tabla_hallazgos.csv       
 ```
 
 ## Requisitos
