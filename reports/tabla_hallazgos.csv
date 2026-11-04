@@ -1,0 +1,13 @@
+﻿Dataset,Problema identificado,Evidencia encontrada,Posible impacto,Acción propuesta
+Dataset 1 – Kaggle,Valores faltantes en country,28908 filas sin país (lista Global),Se mezclarían canciones de la lista Global con las de Colombia,Filtrar country == 'CO'
+Dataset 1 – Kaggle,Fechas guardadas como texto,snapshot_date y album_release_date son de tipo str,No se puede filtrar 2024 ni agrupar por mes de forma confiable,Convertir con pd.to_datetime()
+Dataset 1 – Kaggle,Canciones distintas en la misma posición,3686 posiciones repetidas en 6 fechas; 33 en Colombia 2024,Canciones contadas de más y posiciones vacías: distorsiona la frecuencia de géneros,"Excluir 2024-03-14, 2024-03-16 y 2024-03-18 de Colombia"
+Dataset 1 – Kaggle,Duración igual a 0,29 filas con duration_ms = 0 (tempo y time_signature también en 0),"Sesga los promedios de duración, tempo y compás",Reemplazar por NaN las características de audio de esas filas
+Dataset 1 – Kaggle,Varios artistas en una celda,858692 de 2110316 filas,No se puede asignar un género por artista,"Separar con str.split(', ') revisando artistas que llevan coma en su nombre"
+Dataset 1 – Kaggle,No hay columna de género,Ninguna columna contiene 'genre',No se puede responder la pregunta solo con este archivo,Unir (merge) con una tabla de géneros por artista
+Dataset 1 – Kaggle,Cobertura incompleta de Colombia 2024,17 de 366 días sin datos,El conteo anual subestima los géneros de esos días,Documentar los días faltantes y comparar proporciones en lugar de totales
+Dataset 2 – Charts,Faltante disfrazado en previous_rank,44 canciones con -1,Distorsiona promedios y comparaciones entre semanas,Reemplazar -1 por NaN
+Dataset 2 – Charts,Varios artistas en una celda,100 de 200 canciones,No se puede asignar un género por artista,Separar el artista principal
+Dataset 2 – Charts,Disquera escrita de formas distintas,2 variantes de Bichota,Los conteos por disquera quedan divididos,Pasar a minúsculas y unificar nombres
+Dataset 2 – Charts,Top 200 de una sola semana,200 filas de la semana 2024-01-11,No representa el año completo ni es un Top 50,Filtrar rank <= 50 y usarlo solo para validar
+Dataset 2 – Charts,Identificador con formato distinto,uri = 'spotify:track:ID' y spotify_id = 'ID',No se pueden cruzar los dos datasets directamente,Extraer el ID con str.split(':').str[-1]
