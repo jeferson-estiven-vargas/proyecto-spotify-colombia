@@ -11,7 +11,7 @@ Diagnóstico inicial de calidad de los datos para un proyecto de ciencia de dato
 
 ## Descripción
 
-El proyecto busca identificar qué géneros musicales dominan el Top 50 diario de Spotify en Colombia durante 2024. Esta primera etapa **no responde todavía la pregunta**: revisa si los datos seleccionados tienen la calidad necesaria para hacerlo y documenta qué hay que limpiar antes del análisis.
+El proyecto busca identificar qué géneros musicales dominan el Top 50 diario de Spotify en Colombia durante 2024.
 
 ## Propósito
 
