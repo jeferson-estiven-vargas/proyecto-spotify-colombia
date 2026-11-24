@@ -49,10 +49,10 @@ proyecto-spotify-colombia/
 │   └── raw/                      
 │       └── regional-co-weekly-2024-01-11.csv
 ├── notebooks/
-│   └── diagnostico_calidad.ipynb 
+│   └── data_quality.ipynb 
 └── reports/
-    ├── informe_diagnostico.md    
-    └── tabla_hallazgos.csv       
+    ├── data_quality.md    
+    └── data_quality_findings.csv       
 ```
 
 ## Requisitos
@@ -83,7 +83,7 @@ python -m pip install -r requirements.txt
 jupyter lab
 ```
 
-En Jupyter abre `notebooks/diagnostico_calidad.ipynb` y ejecuta **Kernel → Restart Kernel and Run All Cells**. Si el navegador muestra `ERR_FILE_NOT_FOUND`, copia en el navegador el enlace `http://localhost:8888/lab?token=...` que aparece en la terminal. También puedes abrir el notebook en VS Code y seleccionar el kernel `venv`.
+En Jupyter abre `notebooks/data_quality.ipynb` y ejecuta **Kernel → Restart Kernel and Run All Cells**. Si el navegador muestra `ERR_FILE_NOT_FOUND`, copia en el navegador el enlace `http://localhost:8888/lab?token=...` que aparece en la terminal. También puedes abrir el notebook en VS Code y seleccionar el kernel `venv`.
 
 > **Nota de compatibilidad:** `requirements.txt` se generó con `pip freeze` en Windows. Si lo instalas en macOS o Linux y falla algún paquete exclusivo de Windows (por ejemplo `pywinpty`), quita esa línea e instala de nuevo.
 
@@ -94,7 +94,7 @@ En Jupyter abre `notebooks/diagnostico_calidad.ipynb` y ejecuta **Kernel → Res
 - Colombia 2024 tiene datos de **349 de 366 días**; quitando 3 días con listas mezcladas quedan **346 días confiables (94,5 %)**.
 - Se encontraron problemas que `isna()` no detecta: el `-1` en `previous_rank`, canciones distintas en la misma posición, filas con duración 0 y varios artistas en una sola celda.
 
-El detalle completo está en el [informe técnico](reports/informe_diagnostico.md) y en la [tabla de hallazgos](reports/tabla_hallazgos.csv).
+El detalle completo está en el [informe técnico](reports/data_quality.md) y en la [tabla de hallazgos](reports/data_quality_findings.csv).
 
 ## Herramientas
 
