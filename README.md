@@ -1,41 +1,178 @@
-# Python · Estructuras de Datos (GA1-220501093-04-AA1-EV03)
+# Géneros musicales en el Top 50 de Spotify Colombia 2024
 
-**Aprendiz:** Jeferson Estiven Vargas García
+Proyecto de ciencia de datos con Python y pandas: diagnóstico de calidad, limpieza, análisis y estructuración de los datos del Top 50 diario de Spotify en Colombia.
 
-## Descripción del proyecto
+**Programa:** Tecnólogo en Análisis y Desarrollo de Software (228118) – SENA
+**Aprendiz:** Jeferson Estiven Vargas
+**Instructor:** Carlos Enrique Navia Torres
 
-Practiqué las 5 estructuras de datos básicas de Python: listas, tuplas, diccionarios, conjuntos y comprehensions. Por cada tema hice ejercicios sencillos para entender cómo funciona, y al final un "reto" aplicado a la vida real.
+| Evidencia | Contenido | Notebook |
+| --- | --- | --- |
+| GA1-220501094-01-AA1-EV06 – Diagnosticar la calidad de datos | Inspección y diagnóstico de calidad | `notebooks/data_quality.ipynb` |
+| GA1-220501094-01-AA1-EV07 – Preparación, limpieza y estructuración de datos con Pandas | Limpieza, indicadores, combinación y exportación | `notebooks/data_preparation.ipynb` |
 
-## Temas aprendidos
+---
 
-- **Listas** → una caja donde puedo meter varias cosas, cambiarlas, agregar o quitar cuando quiera. Son las más flexibles.
-- **Tuplas** → parecidas a las listas, pero inmutables una vez creadas. Sirven para datos que no deberían cambiar (como una coordenada) o cuando una función devuelve varios valores a la vez.
-- **Diccionarios** → guardan la información con una clave en vez de una posición. Por ejemplo, `persona["nombre"]` en vez de recordar que está en la posición 0.
-- **Conjuntos** → no permiten valores repetidos y son útiles para comparar grupos (comunes, diferencias, etc.).
-- **Comprehensions** → una forma más corta de escribir un `for` que arma una lista, diccionario o conjunto. Al principio se ve raro, pero ahorra líneas de código.
+## Descripción
 
-## Retos resueltos
+El proyecto identifica qué géneros musicales dominan el Top 50 diario de Spotify en Colombia durante 2024.
 
-**Reto 1 (Listas):** sistema de gestión de inventario con listas anidadas (`[nombre, cantidad, precio]`), con funciones para actualizar precio, registrar ventas, añadir productos y mostrar el inventario final.
+## Propósito
 
-![Reto módulo 1](images/modulo1_listas/reto_modulo1.png)
+Que artistas, emisoras y organizadores de eventos puedan tomar decisiones basadas en datos sobre los estilos musicales que más se escuchan en Colombia.
 
-**Reto 2 (Tuplas):** catálogo de películas como tupla de subtuplas (`titulo, director, año, puntuación`), con desempaquetado, el operador `*`, búsqueda por director y estadísticas (mínima, máxima, promedio).
+## Pregunta analítica
 
-![Reto módulo 2](images/modulo2_tuplas/reto_modulo2.png)
+> ¿Qué géneros musicales aparecen con más frecuencia en el Top 50 diario de Spotify Colombia durante 2024?
 
-**Reto 3 (Diccionarios):** análisis de ventas por región con un diccionario anidado (`{región: {Q1, Q2, Q3, Q4}}`), calculando totales por región y trimestre, la región líder, porcentajes con dict comprehension y un reporte final ordenado.
+## Respuesta (EV07)
 
-![Reto módulo 3](images/modulo3_diccionarios/reto_modulo3.png)
+El **urbano latino** (reguetón, trap y estilos afines) domina el Top 50 de Colombia en 2024:
 
-**Reto 4 (Conjuntos):** catálogos de 3 tiendas (unión, intersección, exclusivos, `isdisjoint()`) y recomendaciones de películas según géneros de 3 usuarios usando `& | - ^` y `<=`.
+| Indicador | Resultado |
+| --- | --- |
+| Participación en las apariciones del Top 50 | **79,82 %** (13.808 de 17.300) |
+| Participación en el Top 10 | **86,18 %** |
+| Días en el número 1 | **338 de 346 (97,69 %)**; *LUNA* de Feid fue número 1 durante 149 días |
+| Siguientes géneros | Regional mexicano (6,05 %), pop (4,55 %) y música popular colombiana (2,86 %) |
+| Validación con Spotify Charts (semana del 5 al 11 de enero) | Urbano latino: 80 % en Kaggle y 80 % en el Top 50 oficial |
 
-![Reto módulo 4](images/modulo4_conjuntos/reto_modulo4.png)
+Los demás géneros cambian por temporadas: el regional mexicano baja del 14,8 % en enero al 1,9 % en diciembre, el pop llega al 9,5 % en noviembre y el tropical aparece casi solo en diciembre y enero (música decembrina).
 
-**Reto 5 (Comprehensions):** analizador de ventas usando list, dict y set comprehension para totales, ranking premium, categorías únicas y un resumen final con el gran total.
+**Limitaciones:** se analizaron 346 de los 366 días (17 sin datos y 3 excluidos por listas mezcladas); cada canción recibe un solo género, el de su artista principal; y el 2,26 % de las apariciones quedó sin clasificar.
 
-![Reto módulo 5](images/modulo5_comprehensions/reto_modulo5.png)
+## Datasets
 
-## Reflexión
+### Originales (`data/raw/`, no se modifican)
 
-Con esta actividad entendí que no toda la información se debe guardar en una lista; ahora tengo más claro cuándo conviene una tupla, un diccionario o un conjunto según lo que necesito hacer con los datos. Lo que más trabajo me costó fue acostumbrarme a las comprehensions, pero ya le voy cogiendo el gusto porque el código queda más corto y se entiende mejor de un vistazo.
+| Dataset | Archivo | Fuente | Contenido | ¿Está en el repositorio? |
+| --- | --- | --- | --- | --- |
+| 1 – Kaggle | `universal_top_spotify_songs.csv` | [Top Spotify Songs in 73 Countries](https://www.kaggle.com/datasets/asaniczka/top-spotify-songs-in-73-countries-daily-updated) | Top 50 diario de 72 países y la lista Global (2.110.316 filas, 25 columnas) | **No** (unos 498 MB) |
+| 2 – Spotify Charts | `regional-co-weekly-2024-01-11.csv` | [Spotify Charts – Colombia semanal](https://charts.spotify.com/charts/view/regional-co-weekly/2024-01-11) | Top 200 de Colombia, semana que termina el 11 de enero de 2024 (200 filas, 9 columnas) | Sí |
+| 3 – Géneros por artista | `artist_genres.csv` | Tabla construida para el proyecto a partir de `reports/main_artists.csv` | Género y nivel de confianza de los 186 artistas principales | Sí |
+
+> **Sobre el Dataset 3:** ningún dataset trae el género. El borrador de la tabla se elaboró con apoyo de un asistente de IA y fue revisado por el aprendiz. Los artistas que no se pudieron identificar quedan como `Sin clasificar` (2,26 % de las apariciones).
+
+### Procesados (`data/processed/`, generados por `data_preparation.ipynb`)
+
+| Archivo | Filas × columnas | Contenido |
+| --- | --- | --- |
+| `top50_co_2024_clean.csv` | 17.300 × 30 | **Dataset consolidado**: una fila por aparición diaria en el Top 50 de Colombia 2024, con su género |
+| `charts_co_weekly_2024-01-11_clean.csv` | 200 × 12 | Spotify Charts limpio, con `spotify_id` y artista principal |
+| `genre_summary.csv` | 10 × 8 | Apariciones, canciones, artistas y participación por género |
+| `genre_monthly_share.csv` | 120 × 3 | Participación mensual de cada género (formato largo) |
+| `artist_summary.csv` | 186 × 10 | Apariciones de cada artista principal con su género |
+
+### Cómo obtener el Dataset 1
+
+El archivo de Kaggle no se sube a GitHub por su tamaño (está en `.gitignore`).
+
+1. Entra al enlace de Kaggle de la tabla e inicia sesión.
+2. Descarga el dataset con el botón **Download** y descomprime el `.zip`.
+3. Copia `universal_top_spotify_songs.csv` en la carpeta `data/raw/`.
+
+> El dataset de Kaggle se actualiza con frecuencia. Este trabajo se hizo con una versión que va del **2023-10-18 al 2025-06-11**. Si descargas una versión más nueva, algunos números pueden cambiar y algunas validaciones con `assert` podrían avisarlo.
+
+## Transformaciones realizadas (EV07)
+
+### Lección 2 – Limpieza y estandarización
+
+Pipeline de funciones encadenadas con `pipe()`, con un informe de cambios paso a paso:
+
+| Paso | Transformación | Resultado |
+| --- | --- | --- |
+| 1 | Convertir fechas con `pd.to_datetime()` y filtrar Colombia 2024 | 2.110.316 → 17.461 filas; los 30.448 nulos (lista Global y otros países) quedan fuera |
+| 2 | Excluir las 3 fechas con posiciones repetidas (14, 16 y 18 de marzo) | 17.461 → 17.300 filas (346 días × 50) |
+| 3 | Quitar duplicados exactos | Sin cambios (regla de protección) |
+| 4 | Optimizar tipos (`int8`, `int16`, `Int8`, `Int64`) | Memoria de 8,4 a 7,7 MB |
+| 5 | Pasar a nulo el audio de canciones con duración 0 | Sin cambios en Colombia 2024 (regla de protección) |
+| 6 | Estandarizar textos (`\xa0`, espacios dobles y en los extremos) | Sin cambios en Colombia 2024 (regla de protección) |
+| 7 | Crear `main_artist` y `artist_count` | 25 → 27 columnas |
+| Charts | `previous_rank = -1` a nulo; `spotify_id` extraído de `uri`; artista principal | 44 faltantes disfrazados corregidos |
+
+Validación final con 15 reglas `assert` y comparación de la calidad antes y después.
+
+### Lección 3 – Filtrado, ordenamiento y agrupación
+
+- Categorización de cada aparición por género (`map()`) y por franja de posiciones (`pd.cut()`: Top 10, 11-25, 26-50).
+- Filtros con máscaras booleanas, `between()`, `isin()` y `query()`.
+- Cinco indicadores con `groupby()`, `agg()` y `pivot_table()`: participación por género, canciones y artistas por género, participación por franja, días en el número 1 y participación mensual.
+
+### Lección 4 – Combinación y estructuración
+
+- `merge()` con `validate` e `indicator=True` para comparar Kaggle con Spotify Charts y para unir los géneros.
+- No se usa `concat()`: no hay tablas con las mismas columnas que apilar, y apilar datos diarios con semanales sería una combinación artificial.
+- Dataset consolidado validado (clave única fecha + posición, sin nulos en las claves, géneros válidos y mismo resultado que la categorización de la Lección 3).
+- Exportación a CSV con verificación de ida y vuelta. Se usa CSV y no Parquet para no agregar `pyarrow` como dependencia.
+
+## Estructura del repositorio
+
+```
+proyecto-spotify-colombia/
+├── README.md
+├── .gitignore
+├── requirements.txt
+├── data/
+│   ├── raw/
+│   │   ├── universal_top_spotify_songs.csv      (no se sube: ver "Cómo obtener el Dataset 1")
+│   │   ├── regional-co-weekly-2024-01-11.csv
+│   │   └── artist_genres.csv
+│   └── processed/
+│       ├── top50_co_2024_clean.csv
+│       ├── charts_co_weekly_2024-01-11_clean.csv
+│       ├── genre_summary.csv
+│       ├── genre_monthly_share.csv
+│       └── artist_summary.csv
+├── notebooks/
+│   ├── data_quality.ipynb        (EV06)
+│   └── data_preparation.ipynb    (EV07)
+└── reports/
+    ├── data_quality.md
+    ├── data_quality_findings.csv
+    └── main_artists.csv
+```
+
+## Requisitos
+
+- Python 3.12 o superior (pandas 3 necesita Python 3.11 o superior).
+- Git.
+- Unos 2 GB de memoria RAM libres para cargar el Dataset 1.
+
+## Instrucciones de ejecución
+
+Los comandos son para **Git Bash** en Windows.
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/jeferson-estiven-vargas/proyecto-spotify-colombia.git
+cd proyecto-spotify-colombia
+
+# 2. Crear y activar el entorno virtual
+python -m venv venv
+source venv/Scripts/activate      # macOS y Linux: source venv/bin/activate
+
+# 3. Instalar las dependencias
+python -m pip install -r requirements.txt
+
+# 4. Copiar el Dataset 1 en data/raw/ (ver "Cómo obtener el Dataset 1")
+
+# 5. Abrir Jupyter desde la raíz del proyecto
+jupyter lab
+```
+
+Ejecuta los notebooks en orden, con **Kernel → Restart Kernel and Run All Cells**:
+
+1. `notebooks/data_quality.ipynb`: diagnóstico de calidad (EV06).
+2. `notebooks/data_preparation.ipynb`: limpieza, indicadores, combinación y exportación (EV07). Genera `reports/main_artists.csv` y los archivos de `data/processed/`.
+
+Si el navegador muestra `ERR_FILE_NOT_FOUND`, copia en el navegador el enlace `http://localhost:8888/lab?token=...` que aparece en la terminal. También puedes abrir los notebooks en VS Code y seleccionar el kernel `venv`.
+
+> **Nota de compatibilidad:** `requirements.txt` se generó con `pip freeze` en Windows. Si lo instalas en macOS o Linux y falla algún paquete exclusivo de Windows (por ejemplo `pywinpty`), quita esa línea e instala de nuevo.
+
+## Documentación del diagnóstico (EV06)
+
+El detalle del diagnóstico de calidad está en el [informe técnico](reports/data_quality.md) y en la [tabla de hallazgos](reports/data_quality_findings.csv).
+
+## Herramientas
+
+Python 3.12.10 · pandas 3.1.0 · JupyterLab · VS Code · Git y GitHub
