@@ -1,101 +1,41 @@
-# Géneros musicales en el Top 50 de Spotify Colombia 2024
+# Python · Estructuras de Datos (GA1-220501093-04-AA1-EV03)
 
-Diagnóstico inicial de calidad de los datos para un proyecto de ciencia de datos con Python y pandas.
+**Aprendiz:** Jeferson Estiven Vargas García
 
-**Evidencia:** GA1-220501094-01-AA1-EV06 – Diagnosticar la calidad de datos: preparación, exploración y documentación
-**Programa:** Tecnólogo en Análisis y Desarrollo de Software (228118) – SENA
-**Aprendiz:** Jeferson Estiven Vargas
-**Instructor:** Carlos Enrique Navia Torres
+## Descripción del proyecto
 
----
+Practiqué las 5 estructuras de datos básicas de Python: listas, tuplas, diccionarios, conjuntos y comprehensions. Por cada tema hice ejercicios sencillos para entender cómo funciona, y al final un "reto" aplicado a la vida real.
 
-## Descripción
+## Temas aprendidos
 
-El proyecto busca identificar qué géneros musicales dominan el Top 50 diario de Spotify en Colombia durante 2024.
+- **Listas** → una caja donde puedo meter varias cosas, cambiarlas, agregar o quitar cuando quiera. Son las más flexibles.
+- **Tuplas** → parecidas a las listas, pero inmutables una vez creadas. Sirven para datos que no deberían cambiar (como una coordenada) o cuando una función devuelve varios valores a la vez.
+- **Diccionarios** → guardan la información con una clave en vez de una posición. Por ejemplo, `persona["nombre"]` en vez de recordar que está en la posición 0.
+- **Conjuntos** → no permiten valores repetidos y son útiles para comparar grupos (comunes, diferencias, etc.).
+- **Comprehensions** → una forma más corta de escribir un `for` que arma una lista, diccionario o conjunto. Al principio se ve raro, pero ahorra líneas de código.
 
-## Propósito
+## Retos resueltos
 
-Que artistas, emisoras y organizadores de eventos puedan tomar decisiones basadas en datos sobre los estilos musicales que más se escuchan en Colombia.
+**Reto 1 (Listas):** sistema de gestión de inventario con listas anidadas (`[nombre, cantidad, precio]`), con funciones para actualizar precio, registrar ventas, añadir productos y mostrar el inventario final.
 
-## Pregunta analítica
+![Reto módulo 1](images/modulo1_listas/reto_modulo1.png)
 
-> ¿Qué géneros musicales aparecen con más frecuencia en el Top 50 diario de Spotify Colombia durante 2024?
+**Reto 2 (Tuplas):** catálogo de películas como tupla de subtuplas (`titulo, director, año, puntuación`), con desempaquetado, el operador `*`, búsqueda por director y estadísticas (mínima, máxima, promedio).
 
-## Datasets
+![Reto módulo 2](images/modulo2_tuplas/reto_modulo2.png)
 
-| Dataset | Archivo | Fuente | Contenido | ¿Está en el repositorio? |
-| --- | --- | --- | --- | --- |
-| 1 – Kaggle | `universal_top_spotify_songs.csv` | [Top Spotify Songs in 73 Countries](https://www.kaggle.com/datasets/asaniczka/top-spotify-songs-in-73-countries-daily-updated) | Top 50 diario de 72 países y la lista Global (2.110.316 filas, 25 columnas) | **No** (unos 498 MB) |
-| 2 – Spotify Charts | `regional-co-weekly-2024-01-11.csv` | [Spotify Charts – Colombia semanal](https://charts.spotify.com/charts/view/regional-co-weekly/2024-01-11) | Top 200 de Colombia, semana del 11 de enero de 2024 (200 filas, 9 columnas) | Sí |
+**Reto 3 (Diccionarios):** análisis de ventas por región con un diccionario anidado (`{región: {Q1, Q2, Q3, Q4}}`), calculando totales por región y trimestre, la región líder, porcentajes con dict comprehension y un reporte final ordenado.
 
-### Cómo obtener el Dataset 1
+![Reto módulo 3](images/modulo3_diccionarios/reto_modulo3.png)
 
-El archivo de Kaggle no se sube a GitHub por su tamaño (está en `.gitignore`).
+**Reto 4 (Conjuntos):** catálogos de 3 tiendas (unión, intersección, exclusivos, `isdisjoint()`) y recomendaciones de películas según géneros de 3 usuarios usando `& | - ^` y `<=`.
 
-1. Entra al enlace de Kaggle de la tabla e inicia sesión.
-2. Descarga el dataset con el botón **Download** y descomprime el `.zip`.
-3. Copia `universal_top_spotify_songs.csv` en la carpeta `data/raw/`.
+![Reto módulo 4](images/modulo4_conjuntos/reto_modulo4.png)
 
-> El dataset de Kaggle se actualiza con frecuencia. Este diagnóstico se hizo con una versión que va del **2023-10-18 al 2025-06-11**. Si descargas una versión más nueva, algunos números pueden cambiar.
+**Reto 5 (Comprehensions):** analizador de ventas usando list, dict y set comprehension para totales, ranking premium, categorías únicas y un resumen final con el gran total.
 
-## Estructura del repositorio
+![Reto módulo 5](images/modulo5_comprehensions/reto_modulo5.png)
 
-```
-proyecto-spotify-colombia/
-├── README.md                     
-├── .gitignore                    
-├── requirements.txt              
-├── data/
-│   └── raw/                      
-│       └── regional-co-weekly-2024-01-11.csv
-├── notebooks/
-│   └── data_quality.ipynb 
-└── reports/
-    ├── data_quality.md    
-    └── data_quality_findings.csv       
-```
+## Reflexión
 
-## Requisitos
-
-- Python 3.12 o superior (pandas 3 necesita Python 3.11 o superior).
-- Git.
-- Unos 2 GB de memoria RAM libres para cargar el Dataset 1.
-
-## Instrucciones para reproducir el diagnóstico
-
-Los comandos son para **Git Bash** en Windows.
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/jeferson-estiven-vargas/proyecto-spotify-colombia.git
-cd proyecto-spotify-colombia
-
-# 2. Crear y activar el entorno virtual
-python -m venv venv
-source venv/Scripts/activate      # macOS y Linux: source venv/bin/activate
-
-# 3. Instalar las dependencias
-python -m pip install -r requirements.txt
-
-# 4. Copiar el Dataset 1 en data/raw/ (ver "Cómo obtener el Dataset 1")
-
-# 5. Abrir Jupyter desde la raíz del proyecto
-jupyter lab
-```
-
-En Jupyter abre `notebooks/data_quality.ipynb` y ejecuta **Kernel → Restart Kernel and Run All Cells**. Si el navegador muestra `ERR_FILE_NOT_FOUND`, copia en el navegador el enlace `http://localhost:8888/lab?token=...` que aparece en la terminal. También puedes abrir el notebook en VS Code y seleccionar el kernel `venv`.
-
-> **Nota de compatibilidad:** `requirements.txt` se generó con `pip freeze` en Windows. Si lo instalas en macOS o Linux y falla algún paquete exclusivo de Windows (por ejemplo `pywinpty`), quita esa línea e instala de nuevo.
-
-## Resultados principales
-
-- Los datos **se pueden usar, pero no tal como vienen**.
-- **Ningún dataset tiene columna de género**: hay que unir una tabla de géneros por artista.
-- Colombia 2024 tiene datos de **349 de 366 días**; quitando 3 días con listas mezcladas quedan **346 días confiables (94,5 %)**.
-- Se encontraron problemas que `isna()` no detecta: el `-1` en `previous_rank`, canciones distintas en la misma posición, filas con duración 0 y varios artistas en una sola celda.
-
-El detalle completo está en el [informe técnico](reports/data_quality.md) y en la [tabla de hallazgos](reports/data_quality_findings.csv).
-
-## Herramientas
-
-Python 3.12.10 · pandas 3.1.0 · JupyterLab 4.6.5 · Git y GitHub
+Con esta actividad entendí que no toda la información se debe guardar en una lista; ahora tengo más claro cuándo conviene una tupla, un diccionario o un conjunto según lo que necesito hacer con los datos. Lo que más trabajo me costó fue acostumbrarme a las comprehensions, pero ya le voy cogiendo el gusto porque el código queda más corto y se entiende mejor de un vistazo.
