@@ -51,7 +51,7 @@ Los demás géneros cambian por temporadas: el regional mexicano baja del 14,8 %
 | 2 – Spotify Charts | `regional-co-weekly-2024-01-11.csv` | [Spotify Charts – Colombia semanal](https://charts.spotify.com/charts/view/regional-co-weekly/2024-01-11) | Top 200 de Colombia, semana que termina el 11 de enero de 2024 (200 filas, 9 columnas) | Sí |
 | 3 – Géneros por artista | `artist_genres.csv` | Tabla construida para el proyecto a partir de `reports/main_artists.csv` | Género y nivel de confianza de los 186 artistas principales | Sí |
 
-> **Sobre el Dataset 3:** ningún dataset trae el género. El borrador de la tabla se elaboró con apoyo de un asistente de IA y fue revisado por el aprendiz. Los artistas que no se pudieron identificar quedan como `Sin clasificar` (2,26 % de las apariciones).
+> **Sobre el Dataset 3:**La tabla se elaboró con apoyo de un asistente de IA; su revisión detallada está pendiente (40 artistas sin clasificar y 31 con confianza media o baja).
 
 ### Procesados (`data/processed/`, generados por `data_preparation.ipynb`)
 
