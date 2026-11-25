@@ -7,8 +7,8 @@
 | **Aprendiz** | Jeferson Estiven Vargas |
 | **Instructor** | Carlos Enrique Navia Torres |
 | **Fecha** | 3 de noviembre de 2026 |
-| **Notebook** | [`notebooks/diagnostico_calidad.ipynb`](../notebooks/diagnostico_calidad.ipynb) |
-| **Tabla de hallazgos** | [`reports/tabla_hallazgos.csv`](tabla_hallazgos.csv) |
+| **Notebook** | [`notebooks/data_quality.ipynb`](../notebooks/data_quality.ipynb) |
+| **Tabla de hallazgos** | [`reports/data_quality_findings.csv`](data_quality_findings.csv) |
 
 ---
 
@@ -102,7 +102,7 @@ Durante el diagnóstico se probó la hipótesis de que pandas convertía en nulo
 3. Pocos artistas concentran la lista (155 valores distintos de `artist_names` en 200 canciones).
 4. El identificador `uri` tiene un formato distinto al del Dataset 1.
 
-La tabla completa, con 12 hallazgos, evidencia, impacto y acción propuesta, está en [`tabla_hallazgos.csv`](tabla_hallazgos.csv) y en la sección 4.5 del notebook.
+La tabla completa, con 12 hallazgos, evidencia, impacto y acción propuesta, está en [`data_quality_findings.csv`](data_quality_findings.csv) y en la sección 4.5 del notebook.
 
 ---
 
